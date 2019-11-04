@@ -5,7 +5,8 @@ const User = use('App/Models/User')
 
 class UserController {
   async store ({ request }) {
-    const data = request.only(['username', 'email', 'password'])
+    const { roles, permissions, ...data } = request.only(['username', 'email', 'password', 'roles', 'permissions'])
+
     const addresses = request.input('addresses')
 
     const trx = await Database.beginTransaction()
@@ -15,6 +16,16 @@ class UserController {
     await user.addresses().createMany(addresses, trx)
 
     await trx.commit()
+
+    if (roles) {
+      await user.roles().attach(roles)
+    }
+
+    if (permissions) {
+      await user.permissions().attach(permissions)
+    }
+
+    await user.loadMany(['roles', 'permissions'])
 
     return user
   }
