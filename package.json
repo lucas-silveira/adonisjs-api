@@ -28,6 +28,7 @@
     "@adonisjs/mail": "^3.0.10",
     "@adonisjs/redis": "^2.0.7",
     "@adonisjs/validator": "^5.0.6",
+    "@adonisjs/websocket": "^1.0.12",
     "adonis-acl": "^1.1.1",
     "adonis-kue": "^5.0.1",
     "moment": "^2.24.0",
@@ -36,7 +37,9 @@
     "youch": "^2.0.10"
   },
   "devDependencies": {
-    "eslint": "^6.5.1",
+    "@typescript-eslint/eslint-plugin": "^2.6.1",
+    "@typescript-eslint/parser": "^2.6.1",
+    "eslint": "^6.6.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-node": "^10.0.0",
